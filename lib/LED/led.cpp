@@ -58,7 +58,8 @@ void LED::load_config()
 		config.mode = strtol(mode, NULL, 10);
 
 		file.close();
-	} else
+	}
+	else
 	{
 		config.color = 0xffa230;
 		config.brightness = 255;
