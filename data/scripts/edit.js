@@ -218,6 +218,7 @@ function createTree(k, l) {
 			case "cpp":
 			case "css":
 			case "xml":
+			case "config":
 				return true
 			}
 		}

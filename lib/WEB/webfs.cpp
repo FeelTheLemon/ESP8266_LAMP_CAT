@@ -46,6 +46,8 @@ namespace WEB
 			return "application/x-zip";
 		} else if (filename.endsWith(".gz")) {
 			return "application/x-gzip";
+		} else if (filename.endsWith(".config")) {
+			return "text/plain";
 		}
 		return "text/plain";
 	}
