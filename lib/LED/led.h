@@ -10,6 +10,9 @@ namespace LED
 	void load_config();
 	void save_config();
 
+	void on();
+	void off();
+
 	void setBrightness(uint8_t b);
 	uint8_t getBrightness();
 

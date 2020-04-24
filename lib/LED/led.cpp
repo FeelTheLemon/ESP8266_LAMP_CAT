@@ -22,6 +22,7 @@ WS2812FX ws2812fx = WS2812FX(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 unsigned long config_last_save = 0;
 bool config_modified = false;
+
 struct led_config
 {
 	uint32_t color;
@@ -108,6 +109,16 @@ void LED::handle()
 		config_modified = false;
 		config_last_save = now;
 	}
+}
+
+void LED::on()
+{
+	ws2812fx.setBrightness(config.brightness);
+}
+
+void LED::off()
+{
+	ws2812fx.setBrightness(0);
 }
 
 void LED::setBrightness(uint8_t b)

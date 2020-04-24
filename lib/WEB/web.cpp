@@ -77,6 +77,16 @@ void WEB::init()
 		json = String();
 	});
 
+	server.on("/on", HTTP_GET, []() {
+		LED::on();
+		server.send(200, "text/plain", "OK");
+	});
+
+	server.on("/off", HTTP_GET, []() {
+		LED::off();
+		server.send(200, "text/plain", "OK");
+	});
+
 	//list directory
 	server.on("/list", HTTP_GET, handleFileListOld);
 	server.on("/listnew", HTTP_GET, handleFileList);
