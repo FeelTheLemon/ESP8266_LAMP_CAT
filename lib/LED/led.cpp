@@ -1,4 +1,5 @@
 #include "led.h"
+#include <log.h>
 
 #include <Arduino.h>
 #include <WS2812FX.h>
@@ -35,6 +36,7 @@ struct led_config
 
 void LED::load_config()
 {
+	LOG::Log("LED::load_config()");
 	SPIFFS.begin();
 	if (SPIFFS.exists(CONFIG_PATH))
 	{
@@ -72,6 +74,7 @@ void LED::load_config()
 
 void LED::save_config()
 {
+	LOG::Log("LED::save_config()");
 	File file = SPIFFS.open(CONFIG_PATH, "w");
 	char buf[15];
 
@@ -88,6 +91,7 @@ void LED::save_config()
 
 void LED::init()
 {
+	LOG::Log("LED::init()");
 	load_config();
 
 	ws2812fx.init();
@@ -113,16 +117,19 @@ void LED::handle()
 
 void LED::on()
 {
+	LOG::Log("LED::on()");
 	ws2812fx.setBrightness(config.brightness);
 }
 
 void LED::off()
 {
+	LOG::Log("LED::off()");
 	ws2812fx.setBrightness(0);
 }
 
 void LED::setBrightness(uint8_t b)
 {
+	LOG::Log("LED::setBrightness()");
 	config.brightness = b;
 	config_modified = true;
 	ws2812fx.setBrightness(b);
@@ -130,12 +137,13 @@ void LED::setBrightness(uint8_t b)
 
 uint8_t LED::getBrightness()
 {
+	LOG::Log("LED::getBrightness()");
 	return ws2812fx.getBrightness();
 }
 
 void LED::setColor(uint8_t r, uint8_t g, uint8_t b)
 {
-
+	LOG::Log("LED::setColor()");
 	ws2812fx.setColor(r, g, b);
 	config.color = ws2812fx.getColor();
 	config_modified = true;
@@ -143,6 +151,7 @@ void LED::setColor(uint8_t r, uint8_t g, uint8_t b)
 
 void LED::setColor(uint32_t c)
 {
+	LOG::Log("LED::setColor()");
 	config.color = c;
 	config_modified = true;
 	ws2812fx.setColor(c);

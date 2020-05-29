@@ -2,6 +2,7 @@
 #include <wifi.h>
 #include "webfs.h"
 #include <led.h>
+#include <log.h>
 
 ESP8266WebServer WEB::server(80);
 //holds the current upload
@@ -23,6 +24,7 @@ void WEB::init()
 
 	//SERVER INIT
 	server.on("/set", HTTP_GET, []() {
+		LOG::Log("server.on(\"/set\"");
 		if (server.hasArg("color"))
 		{
 			uint32_t color = server.arg("color").toInt();
@@ -57,6 +59,7 @@ void WEB::init()
 	});
 
 	server.on("/get", HTTP_GET, []() {
+		LOG::Log("server.on(\"/get\"");
 		uint32_t c = LED::getColor();
 		uint8_t r = (uint8_t)(c >> 16);
 		uint8_t g = (uint8_t)(c >> 8);
@@ -78,11 +81,13 @@ void WEB::init()
 	});
 
 	server.on("/on", HTTP_GET, []() {
+		LOG::Log("server.on(\"/on\"");
 		LED::on();
 		server.send(200, "text/plain", "OK");
 	});
 
 	server.on("/off", HTTP_GET, []() {
+		LOG::Log("server.on(\"/off\"");
 		LED::off();
 		server.send(200, "text/plain", "OK");
 	});

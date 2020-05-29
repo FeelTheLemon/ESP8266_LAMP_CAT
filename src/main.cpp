@@ -3,6 +3,7 @@
 #include <wifi.h>
 #include <web.h>
 #include <led.h>
+#include <log.h>
 
 #define LED_BUILTIN 2
 
@@ -15,6 +16,8 @@ void setup()
 	WiFiE::init();
 	OTA::init();
 	WEB::init();
+
+	LOG::Log("Init Done!");
 }
 
 char light = 0;

@@ -30,8 +30,8 @@ void WiFiE::init()
 	//reset settings - for testing
 	//wifiManager.resetSettings();
 
-	WiFi.setAutoConnect(true);
-	WiFi.setAutoReconnect(true);
+	//WiFi.setAutoConnect(true);
+	//WiFi.setAutoReconnect(true);
 
 	wifiManager.setAPCallback(configModeCallback);
 

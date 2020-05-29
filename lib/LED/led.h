@@ -25,6 +25,6 @@ namespace LED
 
 	void setSpeed(uint16_t s);
 	uint16_t getSpeed();
-} // namespace WiFiE
+} // namespace LED
 
 #endif //__LED_H__
