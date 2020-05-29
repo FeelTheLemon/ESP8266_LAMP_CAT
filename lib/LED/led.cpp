@@ -66,7 +66,7 @@ void LED::load_config()
 	{
 		config.color = 0xffa230;
 		config.brightness = 255;
-		config.speed = 65535;
+		config.speed = 0;
 		config.mode = FX_MODE_STATIC;
 		config_modified = true;
 	}
@@ -141,9 +141,10 @@ uint8_t LED::getBrightness()
 	return ws2812fx.getBrightness();
 }
 
+
 void LED::setColor(uint8_t r, uint8_t g, uint8_t b)
 {
-	LOG::Log("LED::setColor()");
+	LOG::Log("LED::setColor(r,g,b)");
 	ws2812fx.setColor(r, g, b);
 	config.color = ws2812fx.getColor();
 	config_modified = true;
@@ -151,7 +152,7 @@ void LED::setColor(uint8_t r, uint8_t g, uint8_t b)
 
 void LED::setColor(uint32_t c)
 {
-	LOG::Log("LED::setColor()");
+	LOG::Log("LED::setColor(c)");
 	config.color = c;
 	config_modified = true;
 	ws2812fx.setColor(c);
