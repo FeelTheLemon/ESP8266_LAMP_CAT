@@ -38,6 +38,8 @@ namespace WEB
 			return "image/jpeg";
 		} else if (filename.endsWith(".ico")) {
 			return "image/x-icon";
+		} else if (filename.endsWith(".svg")) {
+			return "image/svg+xml";
 		} else if (filename.endsWith(".xml")) {
 			return "text/xml";
 		} else if (filename.endsWith(".pdf")) {

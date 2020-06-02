@@ -71,6 +71,7 @@ void WEB::init()
 		json += 	", \"r\": " + String(r);
 		json += 	", \"g\": " + String(g);
 		json += 	", \"b\": " + String(b);
+		json += 	", \"hex\": " + String(r, HEX) + String(g, HEX) + String(b, HEX);
 		json += "}";
 		json += ", \"brightness\":" + String(LED::getBrightness());
 		json += ", \"mode\":" + String(LED::getMode());
