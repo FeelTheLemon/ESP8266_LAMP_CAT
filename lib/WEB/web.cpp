@@ -87,6 +87,12 @@ void WEB::init()
 		server.send(200, "text/plain", "OK");
 	});
 
+	server.on("/modes", HTTP_GET, []() {
+		LOG::Log("server.on(\"/modes\"");
+		LED::on();
+		server.send(200, "text/json", "OK");
+	});
+
 	server.on("/off", HTTP_GET, []() {
 		LOG::Log("server.on(\"/off\"");
 		LED::off();
